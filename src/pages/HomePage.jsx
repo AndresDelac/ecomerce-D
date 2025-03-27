@@ -53,7 +53,6 @@ const HomePage = () => {
     loadProducts();
   }, []);
 
-  // Featured carousel slides
   const carouselSlides = [
     {
       id: 1,
