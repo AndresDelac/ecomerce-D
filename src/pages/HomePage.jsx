@@ -74,65 +74,68 @@ const HomePage = () => {
       id: 3,
       title: "Home Essentials",
       description: "Transform your living space",
-      image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80",
+      image: "https://blog.grupoemerita.com/hs-fs/hubfs/Emerita-Decoracion-Casas-01.jpg?width=1200&height=700&name=Emerita-Decoracion-Casas-01.jpg",
       buttonText: "Discover",
       buttonLink: "/products?category=home"
     }
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Featured Carousel Section - Smaller Size with Auto-play */}
-      <section className="w-full mx-auto max-w-4xl py-8">
-        <Carousel className="w-full" setApi={setApi}>
-          <CarouselContent>
-            {carouselSlides.map((slide) => (
-              <CarouselItem key={slide.id} className="relative">
-                <div className="h-[40vh] w-full overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
-                  <img 
-                    src={slide.image} 
-                    alt={slide.title}
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute top-0 left-0 w-full h-full flex items-center z-20">
-                    <div className="container mx-auto px-6 md:px-12">
-                      <div className="max-w-sm">
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                          {slide.title}
-                        </h2>
-                        <p className="text-white/90 text-sm md:text-base mb-4">
-                          {slide.description}
-                        </p>
-                        <Link 
-                          to={slide.buttonLink}
-                          className="inline-block bg-white text-green-600 font-semibold px-4 py-2 text-sm rounded-lg shadow-lg hover:bg-green-50 transition-colors"
-                        >
-                          {slide.buttonText}
-                        </Link>
-                      </div>
-                    </div>
+  <div className="min-h-screen">
+    {/* Ancho del carruel */}
+    <section className="w-full mx-auto max-w-6xl py-8">
+      <Carousel className="w-full" setApi={setApi}>
+        <CarouselContent>
+          {carouselSlides.map((slide) => (
+            <CarouselItem key={slide.id} className="relative group">
+              <div className="aspect-video w-full overflow-hidden rounded-xl bg-gray-100">
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10"></div>
+                <img 
+                  src={slide.image} 
+                  alt={slide.title}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                
+                {/* Contenido de texto reposicionado */}
+                <div className="absolute bottom-8 left-8 right-8 z-20 text-left md:bottom-12 md:left-12">
+                  <div className="max-w-md">
+                    <h2 className="text-2xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
+                      {slide.title}
+                    </h2>
+                    <p className="text-white/90 text-sm md:text-lg mb-6">
+                      {slide.description}
+                    </p>
+                    <Link 
+                      to={slide.buttonLink}
+                      className="inline-block bg-white text-green-600 font-semibold px-6 py-3 text-sm md:text-base rounded-lg shadow-lg hover:bg-green-50 transition-all hover:scale-105"
+                    >
+                      {slide.buttonText}
+                    </Link>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2 z-30">
-            <CarouselPrevious className="relative left-0 translate-x-0 h-8 w-8 rounded-full opacity-70 hover:opacity-100" />
-            <CarouselNext className="relative right-0 translate-x-0 h-8 w-8 rounded-full opacity-70 hover:opacity-100" />
-          </div>
-        </Carousel>
-      </section>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        
+        {/* Controles personalizados */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-4 z-30">
+          <CarouselPrevious className="relative left-0 translate-x-0 h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-none text-white hover:text-green-400" />
+          <CarouselNext className="relative right-0 translate-x-0 h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-none text-white hover:text-green-400" />
+        </div>
+      </Carousel>
+    </section>
 
       {/* Categories Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Shop by Category
+            Nuestras Categorias
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Electronics', 'Clothing', 'Home', 'Beauty'].map((category) => (
+            {['Electronico', 'Ropa', 'Hogar', 'Belleza'].map((category) => (
               <Link 
                 key={category}
                 to={`/products?category=${category.toLowerCase()}`}
@@ -142,10 +145,10 @@ const HomePage = () => {
                   <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-4xl text-gray-400 dark:text-gray-500 group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors">
-                        {category === 'Electronics' && '💻'}
-                        {category === 'Clothing' && '👕'}
-                        {category === 'Home' && '🏠'}
-                        {category === 'Beauty' && '✨'}
+                        {category === 'Electronico' && '💻'}
+                        {category === 'Ropa' && '👕'}
+                        {category === 'Hogar' && '🏠'}
+                        {category === 'Belleza' && '✨'}
                       </span>
                     </div>
                   </div>
@@ -166,13 +169,13 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Featured Products
+              Productos destacados
             </h2>
             <Link 
               to="/products" 
               className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium"
             >
-              View All →
+              Ver Todo →
             </Link>
           </div>
           
@@ -228,33 +231,6 @@ const HomePage = () => {
               ))}
             </div>
           )}
-        </div>
-      </section>
-      
-      {/* Newsletter */}
-      <section className="py-16 bg-gradient-to-r from-green-500 to-blue-500 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-            <p className="text-lg mb-6 opacity-90">
-              Stay updated with our latest products and exclusive offers
-            </p>
-            
-            <form className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-green-50 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
       </section>
     </div>
