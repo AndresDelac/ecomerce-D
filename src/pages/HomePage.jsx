@@ -81,9 +81,9 @@ const HomePage = () => {
   ];
 
   return (
-  <div className="min-h-screen">
+  <div className="min-h-screen space-y-24 md:space-y-32">
     {/* Ancho del carruel */}
-    <section className="w-full mx-auto max-w-6xl py-8">
+    <section className="w-full mx-auto max-w-4xl py-12">
       <Carousel className="w-full" setApi={setApi}>
         <CarouselContent>
           {carouselSlides.map((slide) => (
@@ -119,7 +119,7 @@ const HomePage = () => {
           ))}
         </CarouselContent>
         
-        {/* Controles personalizados */}
+        {/* Controles Carrusel */}
         <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-4 z-30">
           <CarouselPrevious className="relative left-0 translate-x-0 h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-none text-white hover:text-green-400" />
           <CarouselNext className="relative right-0 translate-x-0 h-10 w-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-none text-white hover:text-green-400" />
@@ -127,45 +127,48 @@ const HomePage = () => {
       </Carousel>
     </section>
 
-      {/* Categories Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            Nuestras Categorias
-          </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Electronico', 'Ropa', 'Hogar', 'Belleza'].map((category) => (
-              <Link 
-                key={category}
-                to={`/products?category=${category.toLowerCase()}`}
-                className="group"
-              >
-                <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-                  <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-4xl text-gray-400 dark:text-gray-500 group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors">
-                        {category === 'Electronico' && '💻'}
-                        {category === 'Ropa' && '👕'}
-                        {category === 'Hogar' && '🏠'}
-                        {category === 'Belleza' && '✨'}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                      {category}
-                    </h3>
-                  </div>
-                </div>
-              </Link>
+      {/* Categorias */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+      Nuestras Categorías
+    </h2>
+    
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {['Electrónico', 'Ropa', 'Hogar', 'Belleza'].map((category) => (
+        <Link 
+          key={category}
+          to={`/products?category=${category.toLowerCase()}`}
+          className="group"
+        >
+
+          <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+            
+            <div className="aspect-[4/3] bg-gray-100 dark:bg-gray-700 relative flex-1">
+              <div className="absolute inset-0 flex items-center justify-center p-6">
+                <span className="text-6xl md:text-7xl text-gray-300 dark:text-gray-500 group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors">
+                  {category === 'Electrónico' && '💻'}
+                  {category === 'Ropa' && '👕'}
+                  {category === 'Hogar' && '🏠'}
+                  {category === 'Belleza' && '✨'}
+                </span>
+              </div>
+            </div>
+
+            <div className="p-6 text-center">
+              <h3 className="text-4xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                {category}
+              </h3>
+              </div>
+            </div>
+            </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-16">
+      {/* productos destacados */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -199,12 +202,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* New Arrivals */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      {/* Novedades */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              New Arrivals
+              Recien llegados
             </h2>
             <Link 
               to="/products" 
