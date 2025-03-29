@@ -195,9 +195,12 @@ const HomePage = () => {
     ) : (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {featuredProducts.map(product => (
-          <div key={product.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4">
-            {/* Contenedor de imagen con tamaño fijo y relación de aspecto */}
-            <div className="w-full h-80 mb-4 overflow-hidden">
+          <ProductCard 
+            key={product.id} 
+            product={product}
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4"
+          >
+            <div className="w-full aspect-[4/3] mb-4 overflow-hidden">
               <img 
                 src={product.image} 
                 alt={product.name}
@@ -211,7 +214,7 @@ const HomePage = () => {
             <p className="text-green-600 dark:text-green-400 font-bold">
               ${product.price}
             </p>
-          </div>
+          </ProductCard>
         ))}
       </div>
     )}
