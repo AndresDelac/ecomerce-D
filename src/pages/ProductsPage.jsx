@@ -123,17 +123,17 @@ const ProductsPage = () => {
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
-              <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Filters</h2>
+              <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Filtros</h2>
               
               {/* Search */}
               <div className="mb-6">
-                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Search</h3>
+                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Buscar</h3>
                 <form onSubmit={handleSearch}>
                   <div className="flex">
                     <input
                       type="text"
                       name="search"
-                      placeholder="Search products..."
+                      placeholder="Buscar productos..."
                       defaultValue={searchFilter}
                       className="flex-1 px-3 py-2 border dark:border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
                     />
@@ -151,7 +151,7 @@ const ProductsPage = () => {
               
               {/* Categories */}
               <div className="mb-6">
-                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Categories</h3>
+                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Categorias</h3>
                 <div className="space-y-2">
                   <div className="flex items-center">
                     <input
@@ -187,7 +187,7 @@ const ProductsPage = () => {
               
               {/* Sort */}
               <div>
-                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Sort By</h3>
+                <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Filtrar por</h3>
                 <select
                   value={sortBy}
                   onChange={handleSortChange}
